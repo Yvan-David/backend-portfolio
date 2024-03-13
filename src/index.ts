@@ -12,10 +12,12 @@ import router from './router';
 const app = express();
 const port = process.env.PORT ? parseInt(process.env.PORT, 10) : 8080;
 
-app.use(cors({
-    credentials: true,
-}));
-
+const corsOptions = {
+  origin: ['http://localhost:3000', 'https://backend-portfolio-geq9.onrender.com'],
+  methods: 'GET,PUT,POST,DELETE',
+  allowedHeaders: 'Content-Type, Authorization',
+};
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
